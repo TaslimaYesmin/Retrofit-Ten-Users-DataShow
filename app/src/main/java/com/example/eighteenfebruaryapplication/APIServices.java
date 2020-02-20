@@ -1,6 +1,6 @@
 package com.example.eighteenfebruaryapplication;
 
-import com.example.eighteenfebruaryapplication.model.Post;
+import com.example.eighteenfebruaryapplication.model.User;
 
 import java.util.List;
 
@@ -10,25 +10,25 @@ import retrofit2.http.GET;
 public interface APIServices {
 
     @GET("users")
-    Call<List<Post>> getPostList();
+    Call<List<User>> getPostList();
 
    /* @POST("posts")
-    Call<Post> getPost(@Body Post post);
+    Call<User> getPost(@Body User post);
 
     @FormUrlEncoded
     @POST("posts")
-    Call<Post> createPost(
+    Call<User> createPost(
             @Field("userId") int userId,
             @Field("title") String title,
             @Field("body") String body);
 
 
     @PUT("posts/{id}")
-    Call<Post> putPost(@Path("id") int id, @Body Post post);
+    Call<User> putPost(@Path("id") int id, @Body User post);
 
     @PATCH("posts/{id}")
-    Call<Post>patchPost(@Path("id") int id,@Body Post post);
+    Call<User>patchPost(@Path("id") int id,@Body User post);
 
     @DELETE("posts/{id}")
-    Call<Post> deletePost(@Path("id") int id);*/
+    Call<User> deletePost(@Path("id") int id);*/
 }

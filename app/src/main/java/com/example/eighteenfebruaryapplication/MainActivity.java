@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.example.eighteenfebruaryapplication.adapter.CustomerAdapter;
-import com.example.eighteenfebruaryapplication.model.Post;
+import com.example.eighteenfebruaryapplication.model.User;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private APIServices apiServices;
     private RecyclerView recyclerView;
     private CustomerAdapter customerAdapter;
-    private List<Post> postList;
+    private List<User> userList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,19 +27,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         recyclerView=findViewById(R.id.recyclerViewId);
         apiServices = RetrofitInstance.getInstance().create(APIServices.class);
-        apiServices.getPostList().enqueue(new Callback<List<Post>>() {
+        apiServices.getPostList().enqueue(new Callback<List<User>>() {
             @Override
-            public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
+            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
                 if (response!=null){
-                    postList=response.body();
-                    customerAdapter=new CustomerAdapter(postList,MainActivity.this);
+                    userList =response.body();
+                    customerAdapter=new CustomerAdapter(userList,MainActivity.this);
                     recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
                     recyclerView.setAdapter(customerAdapter);
                 }
             }
 
             @Override
-            public void onFailure(Call<List<Post>> call, Throwable t) {
+            public void onFailure(Call<List<User>> call, Throwable t) {
 
             }
         });
